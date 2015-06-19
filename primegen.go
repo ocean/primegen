@@ -5,23 +5,44 @@ import (
   "math"
 )
 
-var n float64 = 0
+// Start at 3 as we know 1 and 2 are prime.
+var n float64 = 3
+
+// Initial halving divisor
+var div float64 = 2
+
+// Prime checking divisor
+var j float64 = 2
 
 func main() {
   for i := 0; i < 20; i++ {
-    var div float64 = 2
-    var h float64 = math.Floor(n / div) + 1
-    var j float64 = 2
-    for j = 2; j < h; j++ {
-      if math.Mod(n, j) != 0 {
+    var half float64 = math.Floor(n / div)
+    for j < half {
+      if math.Mod(n, j) == 0 {
         //fmt.Printf("Number is %v, %v, %v\n", n, h, j)
-        //break
-        continue
+        j++
+        break
+        // continue
       } else {
-        fmt.Printf("Number is %v, %v, %v\n", n, h, j)
+        // continue
+        fmt.Printf("Number is %v, %v, %v\n", n, half, j)
+        j++
       }
+      // for math.Mod(n, j) > 0 {
+      //   j++
+      //   // break
+      // }
+      // fmt.Printf("Number is %v, %v, %v\n", n, half, j)
+      // continue
+      // break
+      // j++
     }
-    n++
+    // if j == half {
+    //   fmt.Printf("Number is %v, %v, %v\n", n, half, j)
+    //   continue
+    // }
+    // fmt.Printf("Number is %v, %v, %v\n", n, half, j)
+    n += 2
   }
 }
-  
+
